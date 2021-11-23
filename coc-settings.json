@@ -1,0 +1,10 @@
+{
+"languageserver": {
+  "fortran": {
+    "command": "fortls",
+    "filetypes": ["fortran"],
+    "rootPatterns": [".fortls", ".git/"]
+  }
+},
+"snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips"
+}

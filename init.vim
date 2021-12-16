@@ -89,7 +89,8 @@ let g:vimwiki_list = [{'path': '/mnt/d/OneDrive/'}]
 nnoremap Y y$
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
-nnoremap <F5> :term ipython3 -i %<CR>
+autocmd filetype python nnoremap <F5> :term ipython3 -i %<CR>
+autocmd filetype fortran nnoremap <F5> :term gfortran -fdefault-real-8 % -lblas -llapack && ./a.out<CR>
 
 " Vimtex 
 " ============================================================

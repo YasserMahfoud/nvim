@@ -4,7 +4,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'sainnhe/sonokai'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdtree'
-" Plug 'sirver/ultisnips'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
@@ -12,13 +11,13 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'liuchengxu/vista.vim'
 Plug 'lervag/vimtex'
 Plug 'vimwiki/vimwiki'
+Plug 'tibabit/vim-templates'
 call plug#end()
 
 " Color and syntax
 if has('termguicolors')
 	set termguicolors
 endif
-set nowrap
 
 set nocompatible
 filetype plugin on
@@ -98,7 +97,7 @@ autocmd filetype fortran nnoremap <F5> :term gfortran -fdefault-real-8 -O3 % -lb
 let g:tex_flavor='latex'
 let g:vimtex_view_general_viewer = 'texworks'
 let g:vimtex_quickfix_mode=0
-"set conceallevel=1
+au BufEnter *.tex setl tw=80 spell spelllang=en_us
 
 " Rainbow Parentheses
 " ============================================================
@@ -124,5 +123,6 @@ let g:vista#renderer#enable_icon = 0
 " Templates
 " ============================================================
 " ============================================================
-autocmd bufnewfile *.py 0r ~/.config/nvim/templates/template.py
+let g:tmpl_search_paths = ['~/.config/nvim/templates/']
+let g:tmpl_author_name = 'Yasser Mahfoud'
 

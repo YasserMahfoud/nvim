@@ -79,17 +79,44 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " Vimwiki
 " ============================================================
 " ============================================================
-let g:vimwiki_list = [{'path': '/mnt/d/OneDrive/'}]
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
 
+hi VimwikiHeader1 guifg=#FF0000
+hi VimwikiHeader2 guifg=#00FF00
+hi VimwikiHeader3 guifg=#FF00FF
+hi VimwikiHeader4 guifg=#00FFFF
+hi VimwikiHeader5 guifg=#FFFF00
 
-" Remaps
-" ============================================================
-" ============================================================
-nnoremap Y y$
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-autocmd filetype python nnoremap <F5> :term ipython3 -i %<CR>
-autocmd filetype fortran nnoremap <F5> :term gfortran -fdefault-real-8 -O3 % -lblas -llapack && ./a.out<CR>
+"let g:vimwiki_conceal_pre=1 "switch to 1 to fold code blocks
+
+function! VimwikiLinkHandler(link)
+  " Use Vim to open external files with the 'vfile:' scheme.  E.g.:
+  "   1) [[vfile:~/Code/PythonProject/abc123.py]]
+  "   2) [[vfile:./|Wiki Home]]
+  let link = a:link
+  if link =~# '^vfile:'
+    let link = link[1:]
+  else
+    return 0
+  endif
+  let link_infos = vimwiki#base#resolve_link(link)
+  if link_infos.filename == ""
+    echomsg 'Vimwiki Error: Unable to resolve link!'
+    return 0
+  else
+    " ISSURE HERE <-------------------------------------------XXX
+    " right now the file link only works for the
+    " files that are in the same directory as the
+    " vimwiki file
+
+    " This was the original code
+    "exe 'tabnew ' . fnameescape(link_infos.filename)
+    
+    " This is the fix proposed
+    exe 'tabnew ' . fnameescape(split(link_infos.filename,"/")[-1])
+    return 1
+  endif
+endfunction
 
 " Vimtex 
 " ============================================================
@@ -126,3 +153,11 @@ let g:vista#renderer#enable_icon = 0
 let g:tmpl_search_paths = ['~/.config/nvim/templates/']
 let g:tmpl_author_name = 'Yasser Mahfoud'
 
+" Remaps
+" ============================================================
+" ============================================================
+nnoremap Y y$
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+autocmd filetype python nnoremap <F5> :term ipython3 -i %<CR>
+autocmd filetype fortran nnoremap <F5> :term gfortran -fdefault-real-8 -O3 % -lblas -llapack && ./a.out<CR>

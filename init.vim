@@ -134,11 +134,6 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 au Syntax * RainbowParenthesesLoadRound
 
-" NERDtree
-" ============================================================
-" ============================================================
-let g:NERDTreeWinSize=40
-
 " Vista
 " ============================================================
 " ============================================================
@@ -157,7 +152,21 @@ let g:tmpl_author_name = 'Yasser Mahfoud'
 " ============================================================
 " ============================================================
 nnoremap Y y$
+
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
+
+" Keeping it centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+" Undo break points
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+
+
 autocmd filetype python nnoremap <F5> :term ipython3 -i %<CR>
 autocmd filetype fortran nnoremap <F5> :term gfortran -fdefault-real-8 -O3 % -lblas -llapack && ./a.out<CR>

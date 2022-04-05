@@ -1,9 +1,12 @@
 # ~/.config/nvim file
 
 - Requirements:
+  - vim-plug
   - Node (coc.nvim)
   - latexmk (vimtex)
-  - texworks (vimtex)
+  - texlive (vimtex/packages)
+  - texworks (vimtex/vim-pandoc-markdown-preview)
+  - pandoc (vim-pandoc-markdown-preview)
 
 
 - coc.nvim modules:

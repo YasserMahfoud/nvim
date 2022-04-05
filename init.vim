@@ -12,6 +12,9 @@ Plug 'liuchengxu/vista.vim'
 Plug 'lervag/vimtex'
 Plug 'vimwiki/vimwiki'
 Plug 'tibabit/vim-templates'
+Plug 'conornewton/vim-pandoc-markdown-preview'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 " Color and syntax
@@ -19,7 +22,6 @@ if has('termguicolors')
 	set termguicolors
 endif
 
-set nocompatible
 filetype plugin on
 syntax on
 
@@ -28,7 +30,10 @@ let g:sonokai_style = 'shusia'
 color sonokai
 set number
 set relativenumber
-
+set smartindent
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set noswapfile
 
 " CoC.Nvim
 " ============================================================
@@ -118,6 +123,7 @@ function! VimwikiLinkHandler(link)
   endif
 endfunction
 
+
 " Vimtex 
 " ============================================================
 " ============================================================
@@ -125,6 +131,7 @@ let g:tex_flavor='latex'
 let g:vimtex_view_general_viewer = 'texworks'
 let g:vimtex_quickfix_mode=0
 au BufEnter *.tex setl tw=80 spell spelllang=en_us
+
 
 " Rainbow Parentheses
 " ============================================================
@@ -134,6 +141,7 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 au Syntax * RainbowParenthesesLoadRound
 
+
 " Vista
 " ============================================================
 " ============================================================
@@ -142,11 +150,19 @@ let g:vista_sidebar_width = 40
 let g:vista_icon_indent = [">", ""]
 let g:vista#renderer#enable_icon = 0
 
+
 " Templates
 " ============================================================
 " ============================================================
 let g:tmpl_search_paths = ['~/.config/nvim/templates/']
 let g:tmpl_author_name = 'Yasser Mahfoud'
+
+
+" vim-pandoc-markdown-preview
+" ============================================================
+" ============================================================
+let g:md_pdf_viewer = 'texworks'
+
 
 " Remaps
 " ============================================================
@@ -166,6 +182,10 @@ inoremap , ,<c-g>u
 inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
+
+" Reselect visual selection after indenting
+vnoremap < <gv
+vnoremap > >gv
 
 
 autocmd filetype python nnoremap <F5> :term ipython3 -i %<CR>

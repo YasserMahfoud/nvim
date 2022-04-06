@@ -146,9 +146,28 @@ au Syntax * RainbowParenthesesLoadRound
 " ============================================================
 " ============================================================
 nmap <F8> :Vista coc<CR>
-let g:vista_sidebar_width = 40
-let g:vista_icon_indent = [">", ""]
-let g:vista#renderer#enable_icon = 0
+"let g:vista_sidebar_width = 40
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+			\ "function" : "\u0192",
+			\ "variable" : "\u03a7",
+			\ "class"    : "\u2102",
+			\ "method"   : "\u03bc"
+			\}
+
+augroup auto_close_win
+  autocmd!
+  autocmd BufEnter * call s:quit_current_win()
+augroup END
+
+" Quit Nvim if we have only one window, and its filetype match our pattern.
+function! s:quit_current_win() abort
+  let quit_filetypes = ['vista']
+  let buftype = getbufvar(bufnr(), '&filetype')
+  if winnr('$') == 1 && index(quit_filetypes, buftype) != -1
+    quit
+  endif
+endfunction
 
 
 " Templates

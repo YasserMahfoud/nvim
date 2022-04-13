@@ -85,6 +85,7 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " ============================================================
 " ============================================================
 let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+au BufEnter *.md setl spell spelllang=en_us
 
 hi VimwikiHeader1 guifg=#FF0000
 hi VimwikiHeader2 guifg=#00FF00
@@ -118,7 +119,7 @@ function! VimwikiLinkHandler(link)
     "exe 'tabnew ' . fnameescape(link_infos.filename)
     
     " This is the fix proposed
-    exe 'tabnew ' . fnameescape(split(link_infos.filename,"/")[-1])
+    exe 'vs ' . fnameescape(split(link_infos.filename,"/")[-1])
     return 1
   endif
 endfunction

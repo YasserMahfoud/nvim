@@ -111,16 +111,7 @@ function! VimwikiLinkHandler(link)
     echomsg 'Vimwiki Error: Unable to resolve link!'
     return 0
   else
-    " ISSURE HERE <-------------------------------------------XXX
-    " right now the file link only works for the
-    " files that are in the same directory as the
-    " vimwiki file
-
-    " This was the original code
-    "exe 'tabnew ' . fnameescape(link_infos.filename)
-    
-    " This is the fix proposed
-    exe 'vs ' . fnameescape(split(link_infos.filename,"/")[-1])
+    exe 'vs ' . fnameescape(link_infos.filename) 
     return 1
   endif
 endfunction
@@ -209,5 +200,5 @@ vnoremap < <gv
 vnoremap > >gv
 
 
-autocmd filetype python nnoremap <F5> :term ipython3 -i %<CR>
+autocmd filetype python nnoremap <F5> :term ipython3 -i "%"<CR>
 autocmd filetype fortran nnoremap <F5> :term gfortran -fdefault-real-8 -O3 % -lblas -llapack && ./a.out<CR>

@@ -30,7 +30,6 @@ let g:sonokai_style = 'shusia'
 
 color sonokai
 
-
 set mouse=
 set number
 set relativenumber

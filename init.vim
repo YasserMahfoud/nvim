@@ -15,6 +15,7 @@ Plug 'tibabit/vim-templates'
 Plug 'conornewton/vim-pandoc-markdown-preview'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Color and syntax
@@ -28,6 +29,9 @@ syntax on
 let g:sonokai_style = 'shusia'
 
 color sonokai
+
+
+set mouse=
 set number
 set relativenumber
 set smartindent
@@ -40,6 +44,9 @@ set splitright
 " ============================================================
 " ============================================================
 " Use <c-space> to trigger completion.
+
+let g:coc_global_extensions = ['coc-pyright', 'coc-json',
+			\'coc-snippets', 'coc-vimtex', 'coc-java']
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :

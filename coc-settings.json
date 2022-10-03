@@ -6,5 +6,6 @@
     "rootPatterns": [".fortls", ".git/"]
   }
 },
-"snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips"
+"snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips",
+"suggest.noselect": true
 }

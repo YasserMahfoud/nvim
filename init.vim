@@ -180,6 +180,7 @@ let g:tmpl_author_name = 'Yasser Mahfoud'
 " ============================================================
 " ============================================================
 let g:md_pdf_viewer = 'texworks'
+let g:md_args = "--highlight-style=tango"
 
 
 " Remaps

@@ -122,6 +122,8 @@ function! VimwikiLinkHandler(link)
   endif
 endfunction
 
+" Tab key is no longer bind
+let g:vimwiki_key_mappings = { 'table_mappings': 0 }
 
 " Vimtex 
 " ============================================================

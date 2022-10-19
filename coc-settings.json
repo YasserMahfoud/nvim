@@ -7,5 +7,6 @@
   }
 },
 "snippets.userSnippetsDirectory": "~/.config/nvim/ultisnips",
-"suggest.noselect": true
+"suggest.noselect": true,
+"pyright.inlayHints.variableTypes": false
 }

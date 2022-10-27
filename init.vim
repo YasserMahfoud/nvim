@@ -208,6 +208,12 @@ inoremap ? ?<c-g>u
 vnoremap < <gv
 vnoremap > >gv
 
+" Use ctrl-[hjkl] to select the active split
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+
 
 autocmd filetype python nnoremap <F5> :term ipython3 -i "%"<CR>
 autocmd filetype fortran nnoremap <F5> :term gfortran -fdefault-real-8 -O3 % -lblas -llapack && ./a.out<CR>
